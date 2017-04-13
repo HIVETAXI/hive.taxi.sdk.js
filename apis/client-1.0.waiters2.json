@@ -1,0 +1,121 @@
+{
+  "versiob": 2,
+  "waiters": {
+    "OrderAccepted": {
+      "delay": 5,
+      "operation": "GetOrderStatus",
+      "maxAttempts": 25,
+      "acceptors": [
+        {
+          "expected": 1,
+          "matcher": "path",
+          "state": "success",
+          "argument": "state"
+        },
+        {
+          "expected": "ResourceNotFoundException",
+          "matcher": "error",
+          "state": "retry"
+        }
+      ]
+    },
+    "OrderAssigned": {
+      "delay": 20,
+      "operation": "GetOrderStatus",
+      "maxAttempts": 25,
+      "acceptors": [
+        {
+          "expected": 2,
+          "matcher": "path",
+          "state": "success",
+          "argument": "state"
+        },
+        {
+          "expected": "ResourceNotFoundException",
+          "matcher": "error",
+          "state": "retry"
+        }
+      ]
+    },
+    "OrderWaiting": {
+      "delay": 15,
+      "operation": "GetOrderStatus",
+      "maxAttempts": 240,
+      "acceptors": [
+        {
+          "expected": 3,
+          "matcher": "path",
+          "state": "success",
+          "argument": "state"
+        },
+        {
+          "expected": "ResourceNotFoundException",
+          "matcher": "error",
+          "state": "retry"
+        }
+      ]
+    },
+    "OrderCompleted": {
+      "delay": 20,
+      "operation": "GetOrderStatus",
+      "maxAttempts": 25,
+      "acceptors": [
+        {
+          "expected": 4,
+          "matcher": "path",
+          "state": "success",
+          "argument": "state"
+        },
+        {
+          "expected": "ResourceNotFoundException",
+          "matcher": "error",
+          "state": "retry"
+        }
+      ]
+    },
+    "OrderExists": {
+      "delay": 5,
+      "operation": "GetOrderStatus",
+      "maxAttempts": 20,
+      "acceptors": [
+        {
+          "expected": 200,
+          "matcher": "status",
+          "state": "success"
+        },
+        {
+          "expected": 301,
+          "matcher": "status",
+          "state": "success"
+        },
+        {
+          "expected": 403,
+          "matcher": "status",
+          "state": "success"
+        },
+        {
+          "expected": 404,
+          "matcher": "status",
+          "state": "retry"
+        }
+      ]
+    },
+    "OrderNotExists": {
+      "delay": 5,
+      "operation": "GetOrderStatus",
+      "maxAttempts": 20,
+      "acceptors": [
+        {
+          "expected": 404,
+          "matcher": "status",
+          "state": "success"
+        },
+        {
+          "expected": "ResourceNotFoundException",
+          "matcher": "error",
+          "state": "success"
+        }
+      ]
+    }
+  }
+}

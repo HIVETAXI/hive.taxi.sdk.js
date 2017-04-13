@@ -1,0 +1,13 @@
+syntax: glob
+
+configuration
+node_modules
+npm-debug.log
+coverage
+vendor
+.yardoc
+doc
+test/browser/build
+test/browser/sample/appinfo.js
+dist/hivetaxi-sdk-all.js
+.idea

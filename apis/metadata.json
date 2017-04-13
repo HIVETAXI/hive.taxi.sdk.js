@@ -1,0 +1,18 @@
+{
+  "cartographer": {
+    "name": "Cartographer",
+    "cors": true
+  },
+  "client": {
+    "name": "Client",
+    "cors": true
+  },
+  "driver": {
+    "name": "Driver",
+    "cors": true
+  },
+  "contractor": {
+    "name": "Contractor",
+    "cors": true
+  }
+}

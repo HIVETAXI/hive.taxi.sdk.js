@@ -1,0 +1,19 @@
+-m markdown
+--markup-provider rdiscount
+--exclude lib/hivetaxi.js
+--no-api private
+--api experimental
+--no-highlight
+--title "HiveTaxi SDK for JavaScript"
+--template-path doc-src/templates
+--plugin sitemap
+-o doc/latest
+-e doc-src/templates/api-versions/plugin.rb
+--plugin js
+--define-class-expr (HiveTaxi\.util\.)?inherit
+--update-class-expr (HiveTaxi\.util\.)?update
+--mixin-module-expr (HiveTaxi\.util\.)?mixin
+lib/core.js
+lib/**/*.js
+-
+README.md

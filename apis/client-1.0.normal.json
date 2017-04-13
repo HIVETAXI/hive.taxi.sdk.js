@@ -1,0 +1,95 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "apiVersion": "1.0",
+    "endpointPrefix": "client",
+    "protocol": "rest-json",
+    "serviceFullName": "HiveTaxi Client Service",
+    "signatureVersion": "v1"
+  },
+  "operations": {
+    "GetOrderStatus": {
+      "http": {
+        "method": "GET",
+        "requestUri": "/1.0/order/status"
+      },
+      "input": {
+        "type": "structure",
+        "required": [
+          "id"
+        ],
+        "members": {
+          "id": {
+            "type": "integer"
+          }
+        }
+      },
+      "output": {
+        "shape": "OrderStatusResponse"
+      },
+      "alias": "orderStatus"
+    }
+  },
+  "shapes": {
+    "OrderStatusResponse": {
+      "type": "structure",
+      "required": [
+        "state"
+      ],
+      "members": {
+        "state": {
+          "type": "integer",
+          "min": 1,
+          "max": 4
+        },
+        "assignee": {
+          "share": "Assignee"
+        }
+      }
+    },
+    "Assignee": {
+      "type": "structure",
+      "required": [
+        "cars"
+      ],
+      "members": {
+        "cars": {
+          "shape": "Car"
+        },
+        "location": {
+          "shape": "GeoLocation"
+        }
+      }
+    },
+    "Car": {
+      "type": "structure",
+      "required": [
+        "brand",
+        "model",
+        "color",
+        "regNum"
+      ],
+      "members": {
+        "brand": {},
+        "model": {},
+        "color": {},
+        "regNum": {}
+      }
+    },
+    "GeoLocation": {
+      "type": "structure",
+      "required": [
+        "coordinates"
+      ],
+      "members": {
+        "coordinates": {
+          "type": "list",
+          "member": {},
+          "min": 2,
+          "max": 2
+        }
+      }
+    }
+  },
+  "documentation": "<fullname>HiveTaxi Client Service</fullname> <p>Welcome to the Client API documentation.</p> <p>You can use Client API to create and manage orders for your taxi service. For general information about using Client API, see the <a href=\"http://docs.hivetaxi.com/client/latest/userguide/\"> <i>HiveTaxi Client User Guide</i> </a>.</p>"
+}

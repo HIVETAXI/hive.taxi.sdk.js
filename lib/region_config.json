@@ -1,0 +1,20 @@
+{
+  "rules": {
+    "*/*": {
+      "endpoint": "{service}-{region}.hivetaxi.com"
+    },
+    "ru/*": "globalRU"
+  },
+  "patterns": {
+    "globalSSL": {
+      "endpoint": "api.hivetaxi.com",
+      "globalEndpoint": true
+    },
+    "globalRU": {
+      "endpoint": "api.hivetaxi.ru"
+    },
+    "dash": {
+      "endpoint": "{service}-{region}.hivetaxi.com"
+    }
+  }
+}

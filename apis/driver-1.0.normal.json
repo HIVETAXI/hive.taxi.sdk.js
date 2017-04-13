@@ -1,0 +1,45 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "apiVersion": "1.0",
+    "endpointPrefix": "driver",
+    "protocol": "rest-json",
+    "serviceFullName": "HiveTaxi Driver Service",
+    "signatureVersion": "v1",
+    "targetPrefix": "Driver_1.0"
+  },
+  "operations": {
+    "ResubmitActivationCode": {
+      "http": {
+        "method": "GET",
+        "requestUri": "/1.0/driver/resubmit"
+      },
+      "input": {
+        "type": "structure",
+        "required": [
+          "id"
+        ],
+        "members": {
+          "id": {
+            "type": "integer",
+            "location": "querystring",
+            "locationName": "id"
+          },
+          "confirmationType": {
+            "type": "string",
+            "location": "querystring",
+            "locationName": "confirmationType",
+            "enum": ["sms", "voice"]
+          }
+        }
+      },
+      "output": {
+      }
+    }
+  },
+  "shapes": {
+  },
+  "waiters": {
+  },
+  "documentation": "<fullname>HiveTaxi Driver Service</fullname> <p>Welcome to the Driver API documentation.</p> <p>You can use Driver API to manage drivers for your taxi service. For general information about using Driver API, see the <a href=\"http://docs.hivetaxi.com/driver/latest/userguide/\"> <i>HiveTaxi Driver User Guide</i> </a>.</p>"
+}

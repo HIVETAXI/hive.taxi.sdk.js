@@ -1,0 +1,544 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "apiVersion": "1.0",
+    "endpointPrefix": "cartography",
+    "protocol": "rest-json",
+    "serviceFullName": "HiveTaxi Cartographer Service",
+    "signatureVersion": "v1",
+    "targetPrefix": "Cartographer_1.0"
+  },
+  "operations": {
+    "ListPointTypes": {
+      "http": {
+        "method": "GET",
+        "requestUri": "/api/cartography/1.0/address/points/types"
+      },
+      "output": {
+        "shape": "PointTypesList"
+      },
+      "alias": "GetPointTypes"
+    },
+    "FindSettlements": {
+      "http": {
+        "method": "GET",
+        "requestUri": "/api/cartography/1.0/address/settlements"
+      },
+      "input": {
+        "shape": "findSettlementsRequest"
+      },
+      "output": {
+        "shape": "AddressList"
+      }
+    },
+    "FindAddresses": {
+      "http": {
+        "method": "GET",
+        "requestUri": "/api/cartography/1.0/address/addresses"
+      },
+      "input": {
+        "shape": "findAddressesRequest"
+      },
+      "output": {
+        "shape": "AddressList"
+      },
+      "alias": "FindStreets"
+    },
+    "GetAddressPoints": {
+      "http": {
+        "method": "GET",
+        "requestUri": "/api/cartography/1.0/address/points"
+      },
+      "input": {
+        "shape": "getAddressPointsRequest"
+      },
+      "output": {
+        "shape": "AddressPointsList"
+      }
+    },
+    "ListTimezones": {
+      "http": {
+        "method": "GET",
+        "requestUri": "/api/cartography/1.0/timezones"
+      },
+      "output": {
+        "shape": "TimezoneList"
+      },
+      "alias": "GetTimezones"
+    },
+    "ListObjectLevels": {
+      "http": {
+        "method": "GET",
+        "requestUri": "/api/cartography/1.0/address/objects/levels"
+      },
+      "output": {
+        "shape": "ObjectLevelsList"
+      },
+      "alias": "GetObjectLevels"
+    },
+    "FindObjects": {
+      "http": {
+        "method": "GET",
+        "requestUri": "/api/cartography/1.0/address/objects/find"
+      },
+      "input": {
+        "shape": "findObjectsRequest"
+      },
+      "output": {
+        "shape": "findObjectsResponse"
+      },
+      "alias": "GetObjects"
+    },
+    "AddObject": {
+      "http": {
+        "method": "POST",
+        "requestUri": "/api/cartography/1.0/address/objects/add"
+      },
+      "input": {
+        "shape": "AddObjectRequest"
+      },
+      "output": {
+        "type": "structure",
+        "required": [
+          "id"
+        ],
+        "members": {
+          "id": {
+            "type": "long"
+          }
+        }
+      },
+      "alias": "CreateObject"
+    },
+    "EditObject": {
+      "http": {
+        "method": "POST",
+        "requestUri": "/api/cartography/1.0/address/objects/edit"
+      },
+      "input": {
+        "shape": "EditObjectRequest"
+      },
+      "output": {},
+      "alias": "UpdateObject"
+    },
+    "MoveObjects": {
+      "http": {
+        "method": "POST",
+        "requestUri": "/api/cartography/1.0/address/objects/edit-parent"
+      },
+      "input": {
+        "type": "structure",
+        "required": [
+          "ids",
+          "parentGuid"
+        ],
+        "members": {
+          "ids": {
+            "type": "list",
+            "member": {
+              "type": "long"
+            }
+          },
+          "parentGuid": {}
+        }
+      },
+      "output": {},
+      "alias": "ChangeParent"
+    },
+    "RemoveObjects": {
+      "http": {
+        "method": "POST",
+        "requestUri": "/api/cartography/1.0/address/objects/remove"
+      },
+      "input": {
+        "type": "structure",
+        "required": [
+          "ids"
+        ],
+        "members": {
+          "ids": {
+            "type": "list",
+            "member": {
+              "type": "long"
+            }
+          }
+        }
+      },
+      "output": {},
+      "alias": "DeleteObjects"
+    },
+    "RestoreObjects": {
+      "http": {
+        "method": "POST",
+        "requestUri": "/api/cartography/1.0/address/objects/restore"
+      },
+      "input": {
+        "type": "structure",
+        "required": [
+          "ids"
+        ],
+        "members": {
+          "ids": {
+            "type": "list",
+            "member": {
+              "type": "long"
+            }
+          }
+        }
+      },
+      "output": {},
+      "alias": "UndeleteObjects"
+    }
+  },
+  "shapes": {
+    "TimezoneList": {
+      "type": "list",
+      "member": {
+        "shape": "Timezone"
+      },
+      "min": 1,
+      "max": 200
+    },
+    "Timezone": {
+      "type": "structure",
+      "required": [
+        "id",
+        "value"
+      ],
+      "members": {
+        "id": {
+          "type": "integer",
+          "documentation": "<p>The identifier of the timezone.</p>"
+        },
+        "value": {
+          "type": "string",
+          "documentation": "<p>The name of the timezone.</p>"
+        }
+      },
+      "documentation": "<p>A key-value pair that identifies or specifies metadata about a timezone.</p>"
+    },
+    "PointTypesList": {
+      "type": "list",
+      "member": {
+        "type": "structure",
+        "required": [
+          "id",
+          "value"
+        ],
+        "members": {
+          "id": {},
+          "value": {}
+        }
+      }
+    },
+    "ObjectLevelsList": {
+      "type": "list",
+      "member": {
+        "type": "structure",
+        "required": [
+          "id",
+          "name"
+        ],
+        "members": {
+          "id": {},
+          "name": {}
+        }
+      }
+    },
+    "findSettlementsRequest": {
+      "type": "structure",
+      "required": [
+        "pattern"
+      ],
+      "members": {
+        "pattern": {
+          "location": "querystring"
+        }
+      }
+    },
+    "findAddressesRequest": {
+      "type": "structure",
+      "required": [
+        "pattern",
+        "parent"
+      ],
+      "members": {
+        "pattern": {
+          "location": "querystring"
+        },
+        "parent": {
+          "type": "long",
+          "location": "querystring"
+        }
+      }
+    },
+    "AddressList": {
+      "type": "list",
+      "member": {"shape": "Address"}
+    },
+    "Address": {
+      "type": "structure",
+      "required": [
+        "levels"
+      ],
+      "members": {
+        "levels": {
+          "shape": "AddressLevels"
+        },
+        "priority": {
+          "type": "integer"
+        },
+        "center": {
+          "shape": "GeoPoint"
+        }
+      }
+    },
+    "AddressLevels": {
+      "type": "list",
+      "member": {
+        "shape": "AddressLevel"
+      }
+    },
+    "AddressLevel": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "type": "integer"
+        },
+        "type": {
+          "type": "integer"
+        },
+        "name": {},
+        "prefix": {}
+      }
+    },
+    "GeoPoint": {
+      "type": "structure",
+      "required": [
+        "coordinates"
+      ],
+      "members": {
+        "coordinates": {
+          "type": "list",
+          "member": {
+            "type": "float"
+          }
+        }
+      }
+    },
+    "getAddressPointsRequest": {
+      "type": "structure",
+      "required": [
+        "parent"
+      ],
+      "members": {
+        "parent": {
+          "type": "long",
+          "location": "querystring"
+        }
+      }
+    },
+    "AddressPointsList": {
+      "type": "list",
+      "member": {
+        "shape": "AddressPoint"
+      }
+    },
+    "AddressPoint": {
+      "type": "structure",
+      "required": [
+        "id",
+        "info",
+        "coordinates"
+      ],
+      "members": {
+        "id": {
+          "type": "long"
+        },
+        "info": {
+          "shape": "AddressPointInfo"
+        },
+        "coordinates": {
+          "shape": "Location"
+        }
+      }
+    },
+    "AddressPointInfo": {
+      "type": "structure",
+      "members": {
+        "house": {},
+        "housing": {},
+        "building": {},
+        "lit": {}
+      }
+    },
+    "findObjectsRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "type": "integer",
+          "location": "querystring"
+        },
+        "existence": {
+          "type": "string",
+          "location": "querystring",
+          "enum": [
+            "all",
+            "existing",
+            "removed"
+          ]
+        },
+        "formalName": {
+          "type": "string",
+          "location": "querystring"
+        },
+        "shortName": {
+          "type": "string",
+          "location": "querystring"
+        },
+        "levelId": {
+          "type": "integer",
+          "location": "querystring"
+        },
+        "guid": {
+          "type": "string",
+          "location": "querystring"
+        },
+        "parentGuid": {
+          "type": "string",
+          "location": "querystring"
+        },
+        "limit": {
+          "type": "integer",
+          "location": "querystring"
+        },
+        "offset": {
+          "type": "integer",
+          "location": "querystring"
+        },
+        "orderBy": {
+          "type": "string",
+          "location": "querystring",
+          "enum": [
+            "formalName",
+            "shortName",
+            "levelId"
+          ]
+        }
+      }
+    },
+    "findObjectsResponse": {
+      "type": "list",
+      "member": {
+        "shape": "AddressObject"
+      }
+    },
+    "AddressObject": {
+      "type": "structure",
+      "required": [
+        "id",
+        "formalName",
+        "shortName",
+        "levelId",
+        "guid",
+        "removed"
+      ],
+      "members": {
+        "id": {
+          "type": "integer"
+        },
+        "formalName": {
+          "type": "string",
+          "max": 256
+        },
+        "shortName": {
+          "type": "string",
+          "max": 128
+        },
+        "levelId": {
+          "type": "integer"
+        },
+        "guid": {
+          "type": "string"
+        },
+        "parentGuid": {
+          "type": "string"
+        },
+        "parentFormalName": {
+          "type": "string",
+          "max": 256
+        },
+        "parentShortName": {
+          "type": "string",
+          "max": 128
+        },
+        "parentLevelId": {
+          "type": "integer"
+        },
+        "timezoneId": {
+          "type": "integer"
+        },
+        "center": {
+          "shape": "Location"
+        },
+        "removed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "AddObjectRequest": {
+      "type": "structure",
+      "required": [
+        "formalName",
+        "shortName",
+        "levelId",
+        "parentGuid"
+      ],
+      "members": {
+        "formalName": {},
+        "shortName": {},
+        "levelId": {"type": "integer"},
+        "parentGuid": {},
+        "timezoneId": {"type": "integer"},
+        "center": {"shape": "Location"}
+      }
+    },
+    "EditObjectRequest": {
+      "type": "structure",
+      "required": [
+        "id",
+        "formalName",
+        "shortName",
+        "levelId",
+        "parentGuid"
+      ],
+      "members": {
+        "id": {"type": "long"},
+        "formalName": {},
+        "shortName": {},
+        "levelId": {"type": "integer"},
+        "parentGuid": {},
+        "timezoneId": {"type": "integer"},
+        "center": {"shape": "Location"}
+      }
+    },
+    "Location": {
+      "type": "structure",
+      "required": [
+        "lon",
+        "lat"
+      ],
+      "members": {
+        "lon": {
+          "type": "float"
+        },
+        "lat": {
+          "type": "float"
+        }
+      }
+    }
+  },
+  "paginators": {},
+  "waiters": {},
+  "documentation": "<fullname>HiveTaxi Cartographer Service</fullname> <p>Welcome to the Cartographer API documentation.</p> <p>You can use Cartographer to manage GIS objects for your taxi service. For general information about using Cartographer, see the <a href=\"http://docs.hivetaxi.com/cartographer/latest/userguide/\"> <i>HiveTaxi Cartographer User Guide</i> </a>.</p>"
+}

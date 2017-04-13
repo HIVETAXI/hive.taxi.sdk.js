@@ -1,0 +1,5 @@
+HiveTaxi SDK for JavaScript
+Copyright 2016 hivetaxi.com, Inc. or its affiliates. All Rights Reserved.
+
+This product includes software developed at
+Hive Development, Inc. (http://hivecompany.com/).

@@ -1,0 +1,394 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "apiVersion": "1.0",
+    "endpointPrefix": "contractor",
+    "protocol": "json-rpc",
+    "serviceFullName": "HiveTaxi Contractor Service",
+    "signatureVersion": "v1",
+    "targetPrefix": "Contractor"
+  },
+  "operations": {
+    "GetGroups": {
+      "http": {
+        "target": "Contractor.getGroups",
+        "requestUri": "/api/contractors/{contractor}"
+      },
+      "input": {
+        "type": "structure",
+        "required": [
+          "contractor"
+        ],
+        "members": {
+          "contractor": {
+            "type": "integer",
+            "location": "uri"
+          },
+          "requestId": {
+            "type": "integer"
+          }
+        }
+      },
+      "output": {
+        "shape": "ContractorGroupList"
+      }
+    },
+    "AddEmployee": {
+      "http": {
+        "target": "Employees.addEmployee",
+        "requestUri": "/api/contractors/{contractor}"
+      },
+      "input": {
+        "type": "structure",
+        "required": [
+          "contractor",
+          "groupId",
+          "firstName",
+          "lastName"
+        ],
+        "members": {
+          "contractor": {
+            "type": "integer",
+            "location": "uri"
+          },
+          "groupId": {
+            "type": "integer"
+          },
+          "firstName": {},
+          "lastName": {},
+          "middleName": {},
+          "requestId": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "EditEmployee": {
+      "http": {
+        "target": "Employees.editEmployee",
+        "requestUri": "/api/contractors/{contractor}"
+      },
+      "input": {
+        "type": "structure",
+        "required": [
+          "contractor",
+          "groupId",
+          "employeeId",
+          "firstName",
+          "lastName"
+        ],
+        "members": {
+          "contractor": {
+            "type": "integer",
+            "location": "uri"
+          },
+          "groupId": {
+            "type": "integer"
+          },
+          "employeeId": {
+            "type": "integer"
+          },
+          "firstName": {},
+          "lastName": {},
+          "middleName": {},
+          "requestId": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "GetEmployee": {
+      "http": {
+        "target": "Employees.getEmployee",
+        "requestUri": "/api/contractors/{contractor}"
+      },
+      "input": {
+        "type": "structure",
+        "required": [
+          "contractor",
+          "groupId",
+          "employeeId"
+        ],
+        "members": {
+          "contractor": {
+            "type": "integer",
+            "location": "uri"
+          },
+          "groupId": {
+            "type": "integer"
+          },
+          "employeeId": {
+            "type": "integer"
+          },
+          "requestId": {
+            "type": "integer"
+          }
+        }
+      },
+      "output": {
+        "shape": "ContractorEmployee"
+      }
+    },
+    "GetEmployees": {
+      "http": {
+        "target": "Employees.getEmployees",
+        "requestUri": "/api/contractors/{contractor}"
+      },
+      "input": {
+        "type": "structure",
+        "required": [
+          "contractor",
+          "groupId"
+        ],
+        "members": {
+          "contractor": {
+            "type": "integer",
+            "location": "uri"
+          },
+          "groupId": {
+            "type": "integer"
+          },
+          "requestId": {
+            "type": "integer"
+          }
+        }
+      },
+      "output": {
+        "shape": "ContractorEmployeeList"
+      }
+    },
+    "LockEmployee": {
+      "http": {
+        "target": "Employees.lockEmployee",
+        "requestUri": "/api/contractors/{contractor}"
+      },
+      "input": {
+        "type": "structure",
+        "required": [
+          "contractor",
+          "groupId",
+          "employeeId"
+        ],
+        "members": {
+          "contractor": {
+            "type": "integer",
+            "location": "uri"
+          },
+          "groupId": {
+            "type": "integer"
+          },
+          "employeeId": {
+            "type": "integer"
+          },
+          "requestId": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "RemoveEmployee": {
+      "http": {
+        "target": "Employees.removeEmployee",
+        "requestUri": "/api/contractors/{contractor}"
+      },
+      "input": {
+        "type": "structure",
+        "required": [
+          "contractor",
+          "groupId",
+          "employeeId"
+        ],
+        "members": {
+          "contractor": {
+            "type": "integer",
+            "location": "uri"
+          },
+          "groupId": {
+            "type": "integer"
+          },
+          "employeeId": {
+            "type": "integer"
+          },
+          "requestId": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "UnlockEmployee": {
+      "http": {
+        "target": "Employees.unlockEmployee",
+        "requestUri": "/api/contractors/{contractor}"
+      },
+      "input": {
+        "type": "structure",
+        "required": [
+          "contractor",
+          "groupId",
+          "employeeId"
+        ],
+        "members": {
+          "contractor": {
+            "type": "integer",
+            "location": "uri"
+          },
+          "groupId": {
+            "type": "integer"
+          },
+          "employeeId": {
+            "type": "integer"
+          },
+          "requestId": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "GetUserInfo": {
+      "http": {
+        "target": "User.getInfo",
+        "requestUri": "/api/contractors/{contractor}"
+      },
+      "input": {
+        "type": "structure",
+        "required": [
+          "contractor"
+        ],
+        "members": {
+          "contractor": {
+            "type": "integer",
+            "location": "uri"
+          },
+          "requestId": {
+            "type": "integer"
+          }
+        }
+      },
+      "output": {
+        "shape": "UserInfo"
+      }
+    }
+  },
+  "shapes": {
+    "ContractorGroupList": {
+      "type": "structure",
+      "required": [
+        "result"
+      ],
+      "members": {
+        "result": {
+          "type": "list",
+          "member": {
+            "type": "structure",
+            "required": [
+              "groupId",
+              "name",
+              "locked"
+            ],
+            "members": {
+              "groupId": {
+                "type": "integer"
+              },
+              "name": {},
+              "locked": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      }
+    },
+    "ContractorEmployee": {
+      "type": "structure",
+      "required": [
+        "result"
+      ],
+      "members": {
+        "result": {
+          "type": "structure",
+          "required": [
+            "groupId",
+            "employeeId",
+            "firstName",
+            "lastName",
+            "locked",
+            "phones"
+          ],
+          "members": {
+            "groupId": {
+              "type": "integer"
+            },
+            "employeeId": {
+              "type": "integer"
+            },
+            "firstName": {},
+            "lastName": {},
+            "middleName": {},
+            "locked": {
+              "type": "boolean"
+            },
+            "phones": {
+              "type": "list",
+              "member": {"type": "string"}
+            }
+          }
+        }
+      }
+    },
+    "ContractorEmployeeList": {
+      "type": "structure",
+      "required": [
+        "result"
+      ],
+      "members": {
+        "result": {
+          "type": "list",
+          "member": {
+            "type": "structure",
+            "required": [
+              "groupId",
+              "employeeId",
+              "firstName",
+              "lastName",
+              "locked"
+            ],
+            "members": {
+              "groupId": {
+                "type": "integer"
+              },
+              "employeeId": {
+                "type": "integer"
+              },
+              "firstName": {},
+              "lastName": {},
+              "middleName": {},
+              "locked": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      }
+    },
+    "UserInfo": {
+      "type": "structure",
+      "required": [
+        "result"
+      ],
+      "members": {
+        "result": {
+          "type": "structure",
+          "required": [
+            "name"
+          ],
+          "members": {
+            "name": {}
+          }
+        }
+      }
+    }
+  },
+  "paginators": {},
+  "waiters": {},
+  "documentation": "<fullname>HiveTaxi Contractor Service</fullname> <p>Welcome to the Contractor API documentation.</p> <p>You can use Contractor to manage orders, payments, users and their groups for your company. For general information about using Contractor API, see the <a href=\"http://docs.hivetaxi.com/contractor/latest/userguide/\"> <i>HiveTaxi Contractor User Guide</i> </a>.</p>"
+}
