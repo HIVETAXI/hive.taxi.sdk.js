@@ -9,3 +9,4 @@ test/browser/build
 test/browser/sample/appinfo.js
 dist/hivetaxi-sdk-all.js
 .idea
+features

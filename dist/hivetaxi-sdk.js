@@ -175,7 +175,7 @@ module.exports={
     "FindObjects": {
       "http": {
         "method": "GET",
-        "requestUri": "/api/cartography/1.0/address/objects/find"
+        "requestUri": "/api/cartography/1.1/address/objects/find"
       },
       "input": {
         "type": "structure",
@@ -196,8 +196,8 @@ module.exports={
             "type": "string",
             "location": "querystring"
           },
-          "levelId": {
-            "type": "integer",
+          "levelIds": {
+            "type": "string",
             "location": "querystring"
           },
           "guid": {
@@ -672,7 +672,7 @@ module.exports={
         ],
         "members": {
           "contractor": {
-            "type": "integer",
+            "type": "string",
             "location": "uri"
           },
           "requestId": {
@@ -724,7 +724,7 @@ module.exports={
         ],
         "members": {
           "contractor": {
-            "type": "integer",
+            "type": "string",
             "location": "uri"
           },
           "groupId": {
@@ -755,7 +755,7 @@ module.exports={
         ],
         "members": {
           "contractor": {
-            "type": "integer",
+            "type": "string",
             "location": "uri"
           },
           "groupId": {
@@ -787,7 +787,7 @@ module.exports={
         ],
         "members": {
           "contractor": {
-            "type": "integer",
+            "type": "string",
             "location": "uri"
           },
           "groupId": {
@@ -854,7 +854,7 @@ module.exports={
         ],
         "members": {
           "contractor": {
-            "type": "integer",
+            "type": "string",
             "location": "uri"
           },
           "groupId": {
@@ -915,7 +915,7 @@ module.exports={
         ],
         "members": {
           "contractor": {
-            "type": "integer",
+            "type": "string",
             "location": "uri"
           },
           "groupId": {
@@ -944,7 +944,7 @@ module.exports={
         ],
         "members": {
           "contractor": {
-            "type": "integer",
+            "type": "string",
             "location": "uri"
           },
           "groupId": {
@@ -973,7 +973,7 @@ module.exports={
         ],
         "members": {
           "contractor": {
-            "type": "integer",
+            "type": "string",
             "location": "uri"
           },
           "groupId": {
@@ -1000,7 +1000,7 @@ module.exports={
         ],
         "members": {
           "contractor": {
-            "type": "integer",
+            "type": "string",
             "location": "uri"
           },
           "requestId": {
