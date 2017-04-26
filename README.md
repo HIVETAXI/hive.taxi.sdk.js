@@ -2,5 +2,5 @@
 
 //change only normal
 
-rake api:contractor
+rake api:contractor ()
 rake browser:build

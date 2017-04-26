@@ -21,7 +21,7 @@
         ],
         "members": {
           "contractor": {
-            "type": "string",
+            "type": "integer",
             "location": "uri"
           },
           "requestId": {
@@ -48,7 +48,7 @@
         ],
         "members": {
           "contractor": {
-            "type": "string",
+            "type": "integer",
             "location": "uri"
           },
           "groupId": {
@@ -79,7 +79,7 @@
         ],
         "members": {
           "contractor": {
-            "type": "string",
+            "type": "integer",
             "location": "uri"
           },
           "groupId": {
@@ -111,7 +111,7 @@
         ],
         "members": {
           "contractor": {
-            "type": "string",
+            "type": "integer",
             "location": "uri"
           },
           "groupId": {
@@ -142,7 +142,7 @@
         ],
         "members": {
           "contractor": {
-            "type": "string",
+            "type": "integer",
             "location": "uri"
           },
           "groupId": {
@@ -171,7 +171,7 @@
         ],
         "members": {
           "contractor": {
-            "type": "string",
+            "type": "integer",
             "location": "uri"
           },
           "groupId": {
@@ -200,7 +200,7 @@
         ],
         "members": {
           "contractor": {
-            "type": "string",
+            "type": "integer",
             "location": "uri"
           },
           "groupId": {
@@ -229,7 +229,7 @@
         ],
         "members": {
           "contractor": {
-            "type": "string",
+            "type": "integer",
             "location": "uri"
           },
           "groupId": {
@@ -256,7 +256,7 @@
         ],
         "members": {
           "contractor": {
-            "type": "string",
+            "type": "integer",
             "location": "uri"
           },
           "requestId": {
