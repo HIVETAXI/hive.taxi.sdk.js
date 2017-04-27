@@ -660,6 +660,66 @@ module.exports={
     "targetPrefix": "Contractor"
   },
   "operations": {
+    "AddEmployeePhone": {
+      "http": {
+        "target": "Employees.addEmployeePhone",
+        "requestUri": "/api/contractors/{contractor}"
+      },
+      "input": {
+        "type": "structure",
+        "required": [
+          "contractor",
+          "groupId",
+          "employeeId",
+          "phone"
+        ],
+        "members": {
+          "contractor": {
+            "type": "integer",
+            "location": "uri"
+          },
+          "groupId": {
+            "type": "integer"
+          },
+          "employeeId": {
+            "type": "integer"
+          },
+          "phone": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "RemoveEmployeePhone": {
+      "http": {
+        "target": "Employees.removeEmployeePhone",
+        "requestUri": "/api/contractors/{contractor}"
+      },
+      "input": {
+        "type": "structure",
+        "required": [
+          "contractor",
+          "groupId",
+          "employeeId",
+          "phone"
+        ],
+        "members": {
+          "contractor": {
+            "type": "integer",
+            "location": "uri"
+          },
+          "groupId": {
+            "type": "integer"
+          },
+          "employeeId": {
+            "type": "integer"
+          },
+          "phone": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "GetGroups": {
       "http": {
         "target": "Contractor.getGroups",
