@@ -491,6 +491,7 @@
       "required": [
         "formalName",
         "levelId",
+        "shortName",
         "parentGuid"
       ],
       "members": {

@@ -285,6 +285,7 @@ module.exports={
         "required": [
           "formalName",
           "levelId",
+          "shortName",
           "parentGuid"
         ],
         "members": {
