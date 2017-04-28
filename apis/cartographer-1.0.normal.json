@@ -490,7 +490,6 @@
       "type": "structure",
       "required": [
         "formalName",
-        "shortName",
         "levelId",
         "parentGuid"
       ],

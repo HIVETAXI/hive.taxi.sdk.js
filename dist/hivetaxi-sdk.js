@@ -284,7 +284,6 @@ module.exports={
         "type": "structure",
         "required": [
           "formalName",
-          "shortName",
           "levelId",
           "parentGuid"
         ],

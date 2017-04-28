@@ -2,5 +2,5 @@
 
 //change only normal
 
-rake api:contractor ()
+rake api:contractor (cartographer, driver, client)
 rake browser:build
