@@ -1115,8 +1115,8 @@ module.exports={
               "balance"
             ],
             "members": {
-              "groupId": {
-                "balance": "integer"
+              "balance": {
+                "type": "integer"
               }
             }
           }
