@@ -1106,11 +1106,19 @@ module.exports={
       "output": {
         "type": "structure",
         "required": [
-          "balance"
+          "result"
         ],
         "members": {
-          "balance": {
-            "type": "integer"
+          "result": {
+            "type": "structure",
+            "required": [
+              "balance"
+            ],
+            "members": {
+              "groupId": {
+                "balance": "integer"
+              }
+            }
           }
         }
       }
