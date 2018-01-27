@@ -9,7 +9,7 @@
   },
   "homepage": "",
   "contributors": [
-    "Dmitry Gorbash <dmitry.gorbash@gmail.com>"
+    "Dmitry Gorbash <dmitry.gorbash@gmail.com> Dima Bukhal <dimabuhal@gmail.com>"
   ],
   "devDependencies": {
     "repl.history": "*",
