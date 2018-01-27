@@ -1085,6 +1085,35 @@ module.exports={
           }
         }
       }
+    },
+    "GetAccountState": {
+      "http": {
+        "target": "Contractor.getAccountState",
+        "requestUri": "/api/contractors/{contractor}"
+      },
+      "input": {
+        "type": "structure",
+        "required": [
+          "contractor"
+        ],
+        "members": {
+          "contractor": {
+            "type": "integer",
+            "location": "uri"
+          }
+        }
+      },
+      "output": {
+        "type": "structure",
+        "required": [
+          "balance"
+        ],
+        "members": {
+          "balance": {
+            "type": "integer"
+          }
+        }
+      }
     }
   },
   "shapes": {},
@@ -2118,7 +2147,7 @@ HiveTaxi.Endpoint = inherit({
 HiveTaxi.HttpRequest = inherit({
 
 
-  constructor: function HttpRequest(endpoint, region, customUserAgent) {
+  constructor: function HttpRequest(endpoint, region, customUserAgent, orgId) {
     endpoint = new HiveTaxi.Endpoint(endpoint);
     this.method = 'POST';
     this.path = endpoint.path || '/';
@@ -2127,6 +2156,9 @@ HiveTaxi.HttpRequest = inherit({
     this.endpoint = endpoint;
     this.region = region;
     this.setUserAgent(customUserAgent);
+    if (orgId) {
+      this.setOrgIdHeader(orgId);
+    }
   },
 
 
@@ -2137,6 +2169,10 @@ HiveTaxi.HttpRequest = inherit({
       customSuffix += ' ' + customUserAgent;
     }
     this.headers[prefix + 'User-Agent'] = HiveTaxi.util.userAgent() + customSuffix;
+  },
+
+  setOrgIdHeader: function setOrgIdHeader(orgId) {
+    this.headers['X-Hive-OrgId'] = orgId;
   },
 
 
@@ -3984,6 +4020,15 @@ HiveTaxi.Request = inherit({
     var endpoint = service.endpoint;
     var region = service.config.region;
     var customUserAgent = service.config.customUserAgent;
+    var orgId;
+
+    if (service._originalConfig && service._originalConfig.orgId) {
+      orgId = service._originalConfig.orgId;
+    }
+
+    if (service._orgId) {
+      orgId = service._orgId;
+    }
 
     if (service.isGlobalEndpoint) region = 'global';
 
@@ -3991,7 +4036,7 @@ HiveTaxi.Request = inherit({
     this.service = service;
     this.operation = operation;
     this.params = params || {};
-    this.httpRequest = new HiveTaxi.HttpRequest(endpoint, region, customUserAgent);
+    this.httpRequest = new HiveTaxi.HttpRequest(endpoint, region, customUserAgent, orgId);
     this.startTime = HiveTaxi.util.date.getDate();
 
     this.response = new HiveTaxi.Response(this);
