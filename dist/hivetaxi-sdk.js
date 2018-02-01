@@ -1116,7 +1116,7 @@ module.exports={
             ],
             "members": {
               "balance": {
-                "type": "integer"
+                "type": "float"
               }
             }
           }
